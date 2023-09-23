@@ -16,7 +16,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: nodered
-          tags: latest
+          tags: "latest ${{ github.sha }}"
           archs: amd64, arm64
           containerfiles: |
             ./Dockerfile
