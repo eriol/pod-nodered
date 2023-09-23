@@ -1,0 +1,14 @@
+---
+
+steps:
+  publish-on-quay-io:
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      platforms: linux/amd64,linux/arm/v6,linux/arm64/v8
+      repo: eriol/pod-nodered
+      registry: quay.io
+      username:
+        from_secret: quay_io_user
+      password:
+        from_secret: quay_io_token
+      dry_run: true
