@@ -1,4 +1,4 @@
-from debian:bookworm-slim as base
+FROM debian:bookworm-slim AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODERED_VERSION=3.1.0
@@ -11,7 +11,7 @@ RUN apt update \
 
 WORKDIR /opt/node-red
 
-from base as builder
+FROM base AS builder
 
 RUN apt update \
     && apt install -y --no-install-recommends npm \
@@ -27,7 +27,7 @@ RUN npm i --unsafe-perm \
 
 RUN pwd && ls -al
 
-from base as release
+FROM base AS release
 
 COPY --from=builder /opt/node-red/node_modules ./node_modules
 
