@@ -5,7 +5,10 @@ ENV NODERED_VERSION=3.1.0
 
 RUN apt update \
     && apt -y upgrade \
-    && apt install -y --no-install-recommends nodejs \
+    && apt install -y --no-install-recommends \
+        nodejs \
+        openssl \
+        ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /opt/node-red /data
 
