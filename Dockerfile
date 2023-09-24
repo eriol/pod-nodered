@@ -7,6 +7,7 @@ RUN apt update \
     && apt -y upgrade \
     && apt install -y --no-install-recommends \
         nodejs \
+        npm \
         openssl \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
@@ -16,10 +17,6 @@ WORKDIR /opt/node-red
 
 FROM base AS builder
 
-RUN apt update \
-    && apt install -y --no-install-recommends npm \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN npm i --unsafe-perm \
     --no-progress \
     --no-update-notifier \
@@ -27,8 +24,6 @@ RUN npm i --unsafe-perm \
     --no-fund \
     --loglevel=error \
     node-red@"$NODERED_VERSION"
-
-RUN pwd && ls -al
 
 FROM base AS release
 
