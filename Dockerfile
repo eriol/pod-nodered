@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim AS base
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV NODERED_VERSION=3.1.0
+ENV NODERED_VERSION=4.0.5
 
 RUN apt update \
     && apt -y upgrade \
